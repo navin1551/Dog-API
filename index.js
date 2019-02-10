@@ -3,7 +3,7 @@
 function numberSubmitHandle() {
     $('.selection-form').on('submit', function(event){
         event.preventDefault();
-        $('.question-area').hide();
+        //$('.question-area').hide();
         getDogImage();
     })
 }
@@ -17,6 +17,7 @@ function getDogImage(){
     fetch(`https://dog.ceo/api/breeds/image/random/${dogNumber}`)
         .then(response => response.json())
         .then(responseJson => displayImages(responseJson))
+        $('.dog-pics').empty();
         $('.result-area').show();
 }
 
