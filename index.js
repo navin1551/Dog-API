@@ -3,7 +3,6 @@
 function numberSubmitHandle() {
     $('.selection-form').on('submit', function(event){
         event.preventDefault();
-        console.log('test');
         $('.question-area').hide();
         getDogImage();
     })
@@ -17,7 +16,7 @@ function getDogImage(){
     let dogNumber = $('#user-input').val();
     fetch(`https://dog.ceo/api/breeds/image/random/${dogNumber}`)
         .then(response => response.json())
-        .then(responseJson => console.log(responseJson))
+        .then(responseJson => displayImages(responseJson))
         $('.result-area').show();
 }
 
@@ -26,9 +25,9 @@ function getDogImage(){
 
 //function to display requested number of dog images to DOM
 
-function displayImages(){
-    $('.dog-pics').replaceWith(
-        `<img src="${responseJson.message}" class="dog-pics">`);
+function displayImages(responseJson){
+    responseJson.message.forEach(function(img){$('.dog-pics').append(
+        `<img src= "${img}" class= ".dog-pics">`)});
 }
 
 
