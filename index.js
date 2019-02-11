@@ -13,10 +13,10 @@ function numberSubmitHandle() {
 
 function getDogImage(){
     let dogNumber = $('#user-input').val();
+    $('.dog-pics').empty();
     fetch(`https://dog.ceo/api/breeds/image/random/${dogNumber}`)
         .then(response => response.json())
         .then(responseJson => {console.log(responseJson),displayImages(responseJson)});
-        $('.dog-pics').empty();
         $('.result-area').show();
 }
 
